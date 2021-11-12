@@ -12,17 +12,29 @@ public class CollisionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Mathf.Sqrt((balls[0].transform.position.x - balls[1].transform.position.x) * (balls[0].transform.position.x - balls[1].transform.position.x) + (balls[0].transform.position.y - balls[1].transform.position.y) * (balls[0].transform.position.y - balls[1].transform.position.y));
 
-        if (distance < balls[0].radius + balls[1].radius)
+
+        for (int i = 0; i < 15; i++)
         {
-            Debug.Log("Pego");
+            for (int j = 0; j < 15; j++)
+            {
+
+                if (i != j)
+                {
+                    distance = Mathf.Sqrt((balls[i].transform.position.x - balls[j].transform.position.x) * (balls[i].transform.position.x - balls[j].transform.position.x) + (balls[i].transform.position.y - balls[j].transform.position.y) * (balls[i].transform.position.y - balls[j].transform.position.y));
+                    if (distance < balls[i].radius + balls[j].radius)
+                    {
+                        Debug.Log("Pego");
+                    }
+                }
+            }
         }
+
     }
 }
