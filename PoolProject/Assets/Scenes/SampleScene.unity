@@ -2153,6 +2153,10 @@ MonoBehaviour:
   - {fileID: 1409185251}
   - {fileID: 1224560011}
   - {fileID: 503867807}
+  fric: 0.005
+  grav: 9.81
+  mass: 0.5
+  radius: 0.08
 --- !u!1001 &1959914345
 PrefabInstance:
   m_ObjectHideFlags: 0

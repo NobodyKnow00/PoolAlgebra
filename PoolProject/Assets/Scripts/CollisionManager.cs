@@ -5,6 +5,10 @@ using UnityEngine;
 public class CollisionManager : MonoBehaviour
 {
     [SerializeField] private BallMovement[] balls;
+    [SerializeField] private float fric;
+    [SerializeField] private float grav;
+    [SerializeField] private float mass;
+    [SerializeField] private float radius;
 
     private float distance;
 
@@ -36,5 +40,6 @@ public class CollisionManager : MonoBehaviour
             }
         }
 
+        
     }
 }
