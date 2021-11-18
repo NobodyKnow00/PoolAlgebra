@@ -2380,6 +2380,10 @@ MonoBehaviour:
   grav: 9.81
   mass: 0.5
   radius: 0.08
+  px: 0
+  pz: 0
+  distance: 0
+  distanceBallsFrames: 0
 --- !u!1001 &1959914345
 PrefabInstance:
   m_ObjectHideFlags: 0
