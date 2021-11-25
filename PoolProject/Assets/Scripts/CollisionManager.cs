@@ -6,6 +6,7 @@ public class CollisionManager : MonoBehaviour
 {
     [SerializeField] private BallMovement[] balls;
     [SerializeField] private DrawFrame[] frames;
+    [SerializeField] private BallMovement[] hole;
     [SerializeField] private float fric;
     [SerializeField] private float grav;
     [SerializeField] private float mass;
@@ -16,6 +17,8 @@ public class CollisionManager : MonoBehaviour
 
     private float distance;
     private float distanceBallsFrames;
+
+    private float distanceBtwHoleAndBall;
 
 
     // Start is called before the first frame update
@@ -76,6 +79,19 @@ public class CollisionManager : MonoBehaviour
                 if (distanceBallsFrames < balls[j].radius)
                 {
                     Debug.Log("ImpactoBordes");
+                }
+            }
+        }
+
+        for (int i = 0; i < hole.Length; i++)
+        {
+            for (int j = 0; j < balls.Length; j++)
+            {
+                distanceBtwHoleAndBall = Vector3.Distance(balls[j].transform.position, hole[i].transform.position);
+
+                if (distanceBtwHoleAndBall <= hole[i].radius)
+                {
+                    Debug.Log("Entro");
                 }
             }
         }
