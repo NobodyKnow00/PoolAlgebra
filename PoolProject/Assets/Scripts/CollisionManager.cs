@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-    [SerializeField] private BallMovement[] balls;
+    [SerializeField] private List<BallMovement> balls;
+    [SerializeField] private List<BallMovement> ballsToRemove;
     [SerializeField] private DrawFrame[] frames;
     [SerializeField] private BallMovement[] hole;
     [SerializeField] private float fric;
@@ -20,6 +21,8 @@ public class CollisionManager : MonoBehaviour
 
     private float distanceBtwHoleAndBall;
 
+     
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +33,9 @@ public class CollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < balls.Length; i++)
+        for (int i = 0; i < balls.Count; i++)
         {
-            for (int j = 0; j < balls.Length; j++)
+            for (int j = 0; j < balls.Count; j++)
             {
                 if (i != j)
                 {
@@ -48,7 +51,7 @@ public class CollisionManager : MonoBehaviour
 
         for (int i = 0; i < frames.Length; i++)
         {
-            for (int j = 0; j < balls.Length; j++)
+            for (int j = 0; j < balls.Count; j++)
             {
                 px = balls[j].transform.position.x;
 
@@ -85,15 +88,25 @@ public class CollisionManager : MonoBehaviour
 
         for (int i = 0; i < hole.Length; i++)
         {
-            for (int j = 0; j < balls.Length; j++)
+            for (int j = 0; j < balls.Count; j++)
             {
                 distanceBtwHoleAndBall = Vector3.Distance(balls[j].transform.position, hole[i].transform.position);
 
                 if (distanceBtwHoleAndBall <= hole[i].radius)
                 {
                     Debug.Log("Entro");
+
+                    ballsToRemove.Add(balls[j]);
                 }
             }
         }
+
+        for(int i = 0; i < ballsToRemove.Count; i++)
+        {
+            Destroy(ballsToRemove[i].gameObject);
+            balls.Remove(ballsToRemove[i]);
+        }
+
+        ballsToRemove.Clear();
     }
 }
