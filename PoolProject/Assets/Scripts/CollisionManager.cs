@@ -5,17 +5,18 @@ using UnityEngine;
 public class CollisionManager : MonoBehaviour
 {
     [SerializeField] private BallMovement[] balls;
-<<<<<<< Updated upstream
     [SerializeField] private DrawFrame[] frames;
     [SerializeField] private BallMovement[] hole;
-=======
->>>>>>> Stashed changes
     [SerializeField] private float fric;
     [SerializeField] private float grav;
     [SerializeField] private float mass;
     [SerializeField] private float radius;
 
+    private float px;
+    private float pz;
+
     private float distance;
+    private float distanceBallsFrames;
 
     private float distanceBtwHoleAndBall;
 
@@ -29,16 +30,14 @@ public class CollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < balls.Length; i++)
         {
-            for (int j = 0; j < 15; j++)
+            for (int j = 0; j < balls.Length; j++)
             {
-
                 if (i != j)
                 {
                     distance = Mathf.Sqrt((balls[i].transform.position.x - balls[j].transform.position.x) * (balls[i].transform.position.x - balls[j].transform.position.x) + (balls[i].transform.position.y - balls[j].transform.position.y) * (balls[i].transform.position.y - balls[j].transform.position.y));
+
                     if (distance < balls[i].radius + balls[j].radius)
                     {
                         Debug.Log("Pego");
@@ -47,7 +46,6 @@ public class CollisionManager : MonoBehaviour
             }
         }
 
-<<<<<<< Updated upstream
         for (int i = 0; i < frames.Length; i++)
         {
             for (int j = 0; j < balls.Length; j++)
@@ -97,8 +95,5 @@ public class CollisionManager : MonoBehaviour
                 }
             }
         }
-=======
-        
->>>>>>> Stashed changes
     }
 }
