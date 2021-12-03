@@ -44,6 +44,9 @@ public class CollisionManager : MonoBehaviour
                     if (distance < balls[i].radius + balls[j].radius)
                     {
                         Debug.Log("Pego");
+                        //((transform.position.x y transform.position.y ball[i])^2) = ((transform.position.x y transform.position.y ball[j])^2) + ((transform.position.x y transform.position.y recta)^2)
+                        //definir la direccion donde la pelota va//
+                        //Formula de Transferir Velocidad//
                     }
                 }
             }
@@ -82,6 +85,7 @@ public class CollisionManager : MonoBehaviour
                 if (distanceBallsFrames < balls[j].radius)
                 {
                     Debug.Log("ImpactoBordes");
+                    //Hacer la pelota perder velocidad y recalcular su direccion//
                 }
             }
         }
